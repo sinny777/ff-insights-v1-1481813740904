@@ -10,7 +10,8 @@ define(function () {
   $scope.trips = [];
   $scope.selectedAirline;
 	$rootScope.airportData;
-  $scope.dataPoints = {"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0};
+  // $scope.dataPoints = {"POSITIVE": {"count": 0, tweets: []}, "NEGATIVE": {"count": 0, tweets: []}, "NEUTRAL": {"count": 0, tweets: []}};
+  $scope.dataPoints = {};
   $scope.selectedSegment = {data: [], color: ""};
   var c10 = d3.scale.category10();
   $scope.d3Chart = {
@@ -191,7 +192,8 @@ define(function () {
         }
 
         // query += " frequent flyer";
-        $scope.dataPoints = {"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0};
+        // $scope.dataPoints = {"POSITIVE": {"count": 0, tweets: []}, "NEGATIVE": {"count": 0, tweets: []}, "NEUTRAL": {"count": 0, tweets: []}};
+        $scope.dataPoints = {};
         analysisResult = [];
         var params = {"q": query, "size": 100, total: 500};
         fetchInsights(params, function(err, resp){
@@ -202,7 +204,8 @@ define(function () {
 
   $scope.showAnalytics = function(carrier){
     console.log("IN showAnalytics: >> ", carrier);
-    $scope.dataPoints = {"POSITIVE": 0, "NEGATIVE": 0, "NEUTRAL": 0};
+    // $scope.dataPoints = {"POSITIVE": {"count": 0, tweets: []}, "NEGATIVE": {"count": 0, tweets: []}, "NEUTRAL": {"count": 0, tweets: []}};
+    $scope.dataPoints = {};
     analysisResult = [];
     var query = "("+carrier.code +" AND frequent flyer) OR ("+ carrier.name +" frequent flyer)";
     if($scope.search.params.startDate){

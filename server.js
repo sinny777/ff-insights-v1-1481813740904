@@ -23,7 +23,7 @@ app.configure(function() {
     app.use(express.logger('dev')); // log every request to the console
     app.set('view engine', 'html'); // set up html for templating
     app.engine('.html', require('ejs').__express);
-    app.set('views', __dirname + '/public/views');
+    app.set('views', __dirname + '/');
     app.use(express.bodyParser()); // get information from html forms
     app.use(express.cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
