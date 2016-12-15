@@ -5,10 +5,9 @@ module.exports = function(grunt) {
       pkg: grunt.file.readJSON('package.json'),
 
         bower: {
-        	
+
             install: {
-            	/*
-              options: {
+            	options: {
             	targetDir: "public/scripts/lib",
                 layout: 'byType',
                 copy: true,
@@ -17,10 +16,9 @@ module.exports = function(grunt) {
                 cleanTargetDir: false,
                 cleanBowerDir: false,
                 bowerOptions: {}
-              }
-              */
+              }            
             }
-            
+
         },
         requirejs: {
           // Need some work in Compile task.  Currently its not it use
@@ -35,7 +33,7 @@ module.exports = function(grunt) {
                     out: 'public/scripts/webapp.min.js',
                     optimize: 'uglify2',
                     include: ['main.js']
-        
+
                 }
             }
         },
