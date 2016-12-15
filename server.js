@@ -13,7 +13,6 @@ var express  = require('express'),
 
 var bluemix = require('./app/config/bluemix');
 
-var vhost = 'frequentflyer.local'
 var port     = process.env.PORT || 9000;
 var ip     = process.env.IP || "localhost";
 
@@ -23,7 +22,7 @@ app.configure(function() {
     app.use(express.logger('dev')); // log every request to the console
     app.set('view engine', 'html'); // set up html for templating
     app.engine('.html', require('ejs').__express);
-    app.set('views', __dirname + 'public');
+    // app.set('views', __dirname + 'public');
     app.use(express.bodyParser()); // get information from html forms
     app.use(express.cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
@@ -63,6 +62,6 @@ if (app.get('env') === 'production') {
 // express.vhost(vhost, app);
 
 server.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + vhost+":"+server.address().port);
+    console.log('Express server listening on port ' +server.address().port);
 });
 //server.timeout = 2000;

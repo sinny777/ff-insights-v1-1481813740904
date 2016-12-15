@@ -10,13 +10,13 @@ module.exports = function(grunt) {
             	options: {
             	targetDir: "public/scripts/lib",
                 layout: 'byType',
-                copy: true,
+                copy: false,
                 install: true,
                 verbose: false,
                 cleanTargetDir: false,
                 cleanBowerDir: false,
                 bowerOptions: {}
-              }            
+              }
             }
 
         },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 
 //    grunt.loadNpmTasks('grunt-npm-install');
     grunt.loadNpmTasks('grunt-bower-installer');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    // grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
     grunt.loadNpmTasks('grunt-nodemon');
