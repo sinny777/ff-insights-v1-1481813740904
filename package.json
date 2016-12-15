@@ -1,0 +1,65 @@
+{
+  "name": "frequentFlyer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Gurvinder Singh",
+  "contributors": [
+    {
+      "name": "Gurvinder Singh",
+      "email": "sinny777@gmail.com"
+    }
+  ],
+  "license": "Apache Version 2.0",
+  "semistandard": {
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it"
+    ]
+  },
+  "dependencies": {
+    "async": "~0.9.0",
+    "aviation-json": "^0.1.0",
+    "cloudant": "^1.4.3",
+    "connect-flash": "latest",
+    "date-util": "^1.2.1",
+    "ejs": "~0.7.1",
+    "express": "~3.2.6",
+    "feedparser": "latest",
+    "google": "^2.1.0",
+    "grunt": "~0.4.1",
+    "grunt-bower-installer": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-requirejs": "latest",
+    "grunt-nodemon": "latest",
+    "grunt-npm-install": "latest",
+    "moment": "latest",
+    "multer": "latest",
+    "nedb": "^1.8.0",
+    "node-schedule": "latest",
+    "node-uuid": "latest",
+    "qs": "latest",
+    "requirejs": "latest",
+    "restler": "^3.4.0",
+    "socket.io": "latest",
+    "twitter": "latest",
+    "underscore": "~1.7.0",
+    "util": "latest",
+    "watson-developer-cloud": "latest"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2",
+    "nodejs-repo-tools": "git+https://github.com/GoogleCloudPlatform/nodejs-repo-tools.git#21daa823090c43fb667157c8b5b0c3b7f45a8357",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.5"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}

@@ -1,0 +1,8 @@
+
+applications:
+- name:      ff-insights-v1
+  host:      ff-insights-v1
+  command: node server.js
+  path: .
+  memory: 512M
+  disk_quota: 1024M
