@@ -33,7 +33,6 @@ module.exports = function(grunt) {
                     out: 'public/scripts/webapp.min.js',
                     optimize: 'uglify2',
                     include: ['main.js']
-
                 }
             }
         },

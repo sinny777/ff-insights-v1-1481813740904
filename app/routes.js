@@ -3,7 +3,7 @@ module.exports = function(app) {
   var ffEndpoint = require('./endpoints/ffEndpoint.js')();
 
     app.get('/', function(req, res){
-        res.render('index');
+        res.render('public/index');
     });
 
     app.get('/views/:name', showClientRequest, function (req, res) {

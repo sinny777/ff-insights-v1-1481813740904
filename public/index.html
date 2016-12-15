@@ -18,19 +18,19 @@
 	<META NAME="author" CONTENT="Gurvinder Singh">
 	<META NAME="ROBOTS" CONTENT="ALL">
 
-	<link rel="stylesheet" type="text/css" href="scripts/lib/angular-toastr/dist/angular-toastr.css" />
-  <link rel="stylesheet" href="scripts/lib/bootstrap/dist/css/bootstrap.css">
-   <link rel="stylesheet" href="scripts/lib/nvd3/build/nv.d3.min.css">
-   <link rel="stylesheet" href="scripts/lib/angularjs-datepicker/dist/angular-datepicker.min.css">
-   <link rel="stylesheet" href="css/font-awesome.css">
-  <link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+   <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.min.css">
+   <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css">
+   <link rel="stylesheet" href="public/css/font-awesome.css">
+  <link rel="stylesheet" href="public/css/app.css">
 
 </head>
 <body data-ng-controller="CommonController">
 
 	<div class="container-fluid">
   		<div class="row" style="height: 52px;">
-  			<div class="col-xs-12" data-ng-include="'scripts/modules/common/views/common/topHeader.html'" ></div>
+  			<div class="col-xs-12" data-ng-include="'public/scripts/modules/common/views/common/topHeader.html'" ></div>
   		</div>
   	  <div class="row">
   	   	 	<div class="col-xs-12" id="app-container" ng-view></div>
@@ -38,13 +38,13 @@
 
       <div class="row">
           <div class="col-xs-12">
-                <div data-ng-include src="'scripts/modules/common/views/common/footer.html'"></div>
+                <div data-ng-include src="'public/scripts/modules/common/views/common/footer.html'"></div>
           </div>
       </div>
   </div>
 
-    <!-- <script data-main="scripts/main.js" src="scripts/lib/requirejs/require.js"></script> -->
-    <script type="text/javascript" data-main="scripts/webapp.min.js" src="scripts/lib/requirejs/require.js" ></script>
+    <!-- <script data-main="public/scripts/main.js" src="bower_components/requirejs/require.js"></script> -->
+    <script type="text/javascript" data-main="public/scripts/webapp.min.js" src="bower_components/requirejs/require.js" ></script>
 
 </body>
 </html>

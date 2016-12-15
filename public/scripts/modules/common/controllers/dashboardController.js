@@ -101,7 +101,7 @@ define(function () {
     $scope.fetchAirlines = function(){
       var req = {
            method: 'GET',
-           url: '/resources/airlines.json',
+           url: 'public/resources/airlines.json',
            headers: {
              'Accept': 'application/json'
            }
@@ -137,7 +137,7 @@ define(function () {
 	    	console.log('IN getAirportsData >>>>>>>>>> ');
 	    	var req = {
 	    			 method: 'GET',
-	    			 url: '/resources/IATACodes.csv',
+	    			 url: 'public/resources/IATACodes.csv',
 	    			 headers: {
 	    			   'Accept': 'application/csv'
 	    			 }

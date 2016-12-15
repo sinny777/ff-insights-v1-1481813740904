@@ -3,24 +3,24 @@ console.log('\n\n<<<<<<<<< INSIDE main.js >>>>>>>>>');
 
 require.config({
     paths :{
-    	'jquery' : '../scripts/lib/jquery/dist/jquery.min',
-        'angular' :'../scripts/lib/angular/angular.min',
-        'angularRoute' : '../scripts/lib/angular-route/angular-route.min',
-        'angularLocalStorage' : '../scripts/lib/angular-local-storage/dist/angular-local-storage.min',
-        'angularAnimate' : '../scripts/lib/angular-animate/angular-animate.min',
-        'angularFilesystem': '../scripts/lib/angular-filesystem/src/filesystem',
-        'angularToastr': '../scripts/lib/angular-toastr/dist/angular-toastr.tpls.min',
-        'angularCookies' : '../scripts/lib/angular-cookies/angular-cookies.min',
-        'angularjsDatepicker' : '../scripts/lib/angularjs-datepicker/dist/angular-datepicker.min',
-        'googlechart' : '../scripts/lib/angular-google-chart/ng-google-chart.min',
-        'd3' : '../scripts/lib/d3/d3.min',
-        'nvd3' : '../scripts/lib/nvd3/build/nv.d3.min',
-        'angular-nvd3' : '../scripts/lib/angular-nvd3/dist/angular-nvd3.min',
-        'bootstrap' : '../scripts/lib/bootstrap/dist/js/bootstrap.min',
-        'ui.bootstrap':'../scripts/lib/angular-bootstrap/ui-bootstrap.min',
-        'cryptojslib' : '../scripts/lib/cryptojslib/rollups/pbkdf2',
-        'querystring': '../scripts/lib/querystring/querystring.min',
-        'text': '../scripts/lib/text'
+    	'jquery' : '/../bower_components/jquery/dist/jquery.min',
+        'angular' :'/../bower_components/angular/angular.min',
+        'angularRoute' : '/../bower_components/angular-route/angular-route.min',
+        'angularLocalStorage' : '/../bower_components/angular-local-storage/dist/angular-local-storage.min',
+        'angularAnimate' : '/../bower_components/angular-animate/angular-animate.min',
+        'angularFilesystem': '/../bower_components/angular-filesystem/src/filesystem',
+        'angularToastr': '/../bower_components/angular-toastr/dist/angular-toastr.tpls.min',
+        'angularCookies' : '/../bower_components/angular-cookies/angular-cookies.min',
+        'angularjsDatepicker' : '/../bower_components/angularjs-datepicker/dist/angular-datepicker.min',
+        'googlechart' : '/../bower_components/angular-google-chart/ng-google-chart.min',
+        'd3' : '/../bower_components/d3/d3.min',
+        'nvd3' : '/../bower_components/nvd3/build/nv.d3.min',
+        'angular-nvd3' : '/../bower_components/angular-nvd3/dist/angular-nvd3.min',
+        'bootstrap' : '/../bower_components/bootstrap/dist/js/bootstrap.min',
+        'ui.bootstrap':'/../bower_components/angular-bootstrap/ui-bootstrap.min',
+        'cryptojslib' : '/../bower_components/cryptojslib/rollups/pbkdf2',
+        'querystring': '/../bower_components/querystring/querystring.min',
+        'text': '/../bower_components/text'
     },
     shim: {
         'angular': {

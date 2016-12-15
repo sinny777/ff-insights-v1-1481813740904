@@ -81,7 +81,7 @@ define(function (require) {
                          function($routeProvider) {
   		$routeProvider.
   			when('/dashboard', {
-  				templateUrl: 'scripts/modules/common/views/dashboard.html',
+  				templateUrl: 'public/scripts/modules/common/views/dashboard.html',
   				controller: 'dashboardController',
   				controllerAs: 'vm',
   				access: { requiredLogin: false }
