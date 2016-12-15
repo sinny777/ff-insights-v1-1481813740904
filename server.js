@@ -23,7 +23,7 @@ app.configure(function() {
     app.use(express.logger('dev')); // log every request to the console
     app.set('view engine', 'html'); // set up html for templating
     app.engine('.html', require('ejs').__express);
-    app.set('views', __dirname + '/');
+    app.set('views', __dirname + 'public');
     app.use(express.bodyParser()); // get information from html forms
     app.use(express.cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
@@ -60,7 +60,7 @@ if (app.get('env') === 'production') {
     // TODO
 };
 
-express.vhost(vhost, app);
+// express.vhost(vhost, app);
 
 server.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + vhost+":"+server.address().port);
