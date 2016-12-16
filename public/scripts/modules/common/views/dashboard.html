@@ -190,7 +190,7 @@
 						<div class="list-group" data-ng-show="selectedSegment.data">
 								<h4 class="list-group-item-heading" style="color: {{selectedSegment.color}};">Total {{selectedSegment.data.polarity}} Tweets: {{selectedSegment.data.count}} </h4>
 								<div class="scrollPanel">
-											<a class="list-group-item" data-ng-repeat="tweet in selectedSegment.data.tweets | orderBy:'postedTime':true" ng-href="#">
+											<a class="list-group-item" data-ng-repeat="tweet in selectedSegment.data.tweets | orderBy:'postedTime':true" href="javascript:void(0);">
 													<h5 class="list-group-item-heading">{{tweet.body}}</h5>
 													<p>Posted Time: {{tweet.postedTime}}</p>
 											</a>

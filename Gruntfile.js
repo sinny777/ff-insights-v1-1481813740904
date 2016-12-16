@@ -27,7 +27,7 @@ module.exports = function(grunt) {
                 	uglify2: {
                         mangle: false
                     },
-                    baseUrl: 'public/scripts',
+                    baseUrl: '/',
                     mainConfigFile: 'public/scripts/main.js',
                     preserveLicenseComments: false, //comment in production
                     out: 'public/scripts/webapp.min.js',
