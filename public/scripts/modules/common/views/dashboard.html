@@ -1,202 +1,121 @@
 <div class="" data-ng-init="initDashboard()">
 
-	<div class="row">
-		<div class="col-xs-12" style="height:10px;"></div>
+	<div class="row" style="padding-top: 3px; margin-top:3px;">
+		<div class="col-xs-12" >
+			<form class="form-inline"	id="search_form">
+				<div class="form-group">
+							<label for="selectedAirlineSel">Select an Airline</label>
+							<select id="selectedAirlineSel" data-ng-model="selectedAirline" class="selectpicker form-control" title="Select an Airline" data-ng-change="airlineSelectionChange();">
+								<option value="search">Search For Airlines</option>
+								<option value="{{airline.name}}" data-ng-repeat="airline in airlines | orderBy:'name'">{{airline.name}}</option>
+							</select>
+				</div>
+
+						<div class="form-group">
+							<!-- <label >Start Date</label> -->
+							<div class="inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-lg fa-calendar"></i></span>
+										<datepicker date-format="yyyy-MM-dd" selector="form-control">
+												<div class="input-group">
+														<input class="form-control" data-ng-model="search.params.startDate" placeholder="Choose a start date" />
+												</div>
+										</datepicker>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<!-- <label class="control-label">End Date</label> -->
+							<div class="inputGroupContainer">
+								<div class="input-group">
+									<span class="input-group-addon"><i
+										class="fa fa-lg fa-calendar"></i></span>
+										<datepicker date-format="yyyy-MM-dd" selector="form-control">
+												<div class="input-group">
+														<input class="form-control" data-ng-model="search.params.endDate" placeholder="Choose a end date" />
+												</div>
+										</datepicker>
+								</div>
+							</div>
+						</div>
+
+								<button class="btn btn-warning" data-ng-click="analyzeForAirline();">
+								Analyze <span class="fa fa-bar-chart"></span>
+								</button>
+
+			</form>
+		</div>
 	</div>
 
-	<div class="row" style="padding-bottom: 15px;margin-bottom: 15px;">
-		<div class="col-md-4">
-				<div class="row">
-					<div class="col-md-12">
-					<div class="panel-group" id="accordion1">
-							<div class="panel panel-default">
-									 <div class="panel-heading">
-											<h4 class="panel-title">
-													<a href="javascript:;" data-toggle="collapse" data-parent="#accordion1" data-target="#searchPanel">
-															Search Flights
-													</a>
-											</h4>
-								  </div>
-									<div id="searchPanel" class="panel-collapse collapse in">
-										<div class="panel-body">
-											<form class="form-horizontal"	id="search_form">
+	<div class="row" data-ng-show="selectedSegment.data && selectedSegment.data.tweets"
+				style="padding-bottom: 5px;margin-bottom: 5px;padding-top: 15px;margin-top: 15px;">
+			<div class="col-md-12">
+					<center><h3>{{selectedAirline}} Twitter Insights</h3></center>
+			</div>
+	</div>
 
-												<div class="form-group">
-														<label class="col-md-4 control-label">Select an Airline</label>
-														<div class="col-md-6 inputGroupContainer">
-															<div class="input-group">
-																	<select data-ng-model="selectedAirline" class="selectpicker form-control" title="Select an Airline" data-ng-change="airlineSelectionChange();">
-																		<option value="search">Search For Airlines</option>
-																		<option value="{{airline.name}}" data-ng-repeat="airline in airlines | orderBy:'name'">{{airline.name}}</option>
-																	</select>
-															</div>
-													  </div>
-												</div>
-												<div data-ng-show="!search.enable" style="padding: 10px;">
-														<div class="form-group">
-															<label class="col-md-4 control-label">Start Date</label>
-															<div class="col-md-8 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-lg fa-calendar"></i></span>
-																		<datepicker date-format="yyyy-MM-dd" selector="form-control">
-																				<div class="input-group">
-																						<input class="form-control" data-ng-model="search.params.startDate" placeholder="Choose a start date" />
-																				</div>
-																		</datepicker>
-																</div>
-															</div>
-														</div>
+	<div class="row" data-ng-show="analysisResult && analysisResult.length > 0">
 
-														<div class="form-group">
-															<label class="col-md-4 control-label">End Date</label>
-															<div class="col-md-8 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-lg fa-calendar"></i></span>
-																		<datepicker date-format="yyyy-MM-dd" selector="form-control">
-																				<div class="input-group">
-																						<input class="form-control" data-ng-model="search.params.endDate" placeholder="Choose a end date" />
-																				</div>
-																		</datepicker>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-md-4 pull-right" data-ng-show="!search.enable">
-																<button class="btn btn-warning" data-ng-click="analyzeForAirline();">
-																Analyze <span class="fa fa-bar-chart"></span>
-																</button>
-														</div>
-											</div>
-
-
-												<div data-ng-show="search.enable">
-														<div class="form-group">
-																<label class="col-md-4 control-label">Origin</label>
-																<div class="col-md-8 inputGroupContainer">
-																	<div class="input-group">
-																		<span class="input-group-addon"><i
-																			class="fa fa-plane"></i></span>
-																			<ng-airports id="ex1" placeholder="Origin Airport" pause="100" selectedobject="search.params.origin" localdata="airportData" searchfields="IATAcode,City,Region" titlefield="IATAcode" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
-																	</div>
-																</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-md-4 control-label">Destination</label>
-															<div class="col-md-8 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-plane"></i></span>
-																		<ng-airports id="ex1" placeholder="Destination Airport" pause="100" selectedobject="search.params.destination" localdata="airportData" searchfields="IATAcode,City,Region" titlefield="IATAcode" minlength="1" inputclass="form-control form-control-small" matchclass="highlight" />
-																</div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-md-4 control-label">Date</label>
-															<div class="col-md-8 inputGroupContainer">
-																<div class="input-group">
-																	<span class="input-group-addon"><i
-																		class="fa fa-lg fa-calendar"></i></span>
-																		<datepicker date-format="yyyy-MM-dd" selector="form-control">
-																				<div class="input-group">
-																						<input class="form-control" data-ng-model="search.params.date" placeholder="Choose a date" />
-																				</div>
-																		</datepicker>
-																</div>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label class="col-md-4 control-label"></label>
-															<div class="col-md-4">
-																<button class="btn btn-warning" data-ng-click="searchAndAnlyze();">
-																	Search <span class="fa fa-search"></span>
-																</button>
-															</div>
-														</div>
-													</div>
-											</form>
-										</div>
-									</div>
-							</div>
+		<div class="col-md-6 insight-container">
+			<h2><img src="public/images/trending-icon2.png" height="36px"></img> Tweets<small> mentions</small></h2>
+			<div class="insight-box insight-box--positive">
+				<div class="span-top">
+						<div class="count" id="tweets-positive">{{dataPoints["POSITIVE"].count}}</div>
+					</div>
+					<div class="span-bottom">
+					Positive Tweets
 				</div>
 			</div>
-
-	  </div>
-
-		<div class="row">
-					<div class="col-md-12">
-								<div class="panel-group" id="accordion2" data-ng-if="search.results">
-										<div class="panel panel-default">
-												 <div class="panel-heading">
-														<h4 class="panel-title">
-																<a href="javascript:;" data-toggle="collapse" data-parent="#accordion2" data-target="#searchResultsPanel">
-																		Search Results
-																</a>
-														</h4>
-												</div>
-												<div id="searchResultsPanel" class="panel-collapse collapse in scrollPanel">
-
-													<div class="list-group">
-															<a href="javascript:void(0);" class="list-group-item" data-ng-click="showAnalytics(carrier)" data-ng-repeat="carrier in search.results.trips.data.carrier">
-																<h6 class="list-group-item-heading" >{{carrier.name}}({{carrier.code}})</h6>
-															</a>
-													</div>
-													<!-- <div class="panel-body" style="padding: 1px;">
-														<div >
-															<div class="row" data-ng-repeat="trip in trips">
-																	<div class="col-md-12">
-																		<div class="panel panel-primary">
-																			<div class="panel-heading">
-																				<h4 class="panel-title">Trip Duration: {{trip.duration}} </h4>
-																			</div>
-																			<div class="panel-body">
-																				<div class="list-group">
-																						<a href="#" class="list-group-item" data-ng-repeat="segment in trip.segments">
-																							<h6 class="list-group-item-heading">{{segment.flight.name}}({{segment.flight.carrier}}{{segment.flight.number}})</h6>
-																							<p class="list-group-item-text">
-																								Origin: {{segment.leg[0].origin}} <br />
-																								Destination: {{segment.leg[0].destination}} <br />
-																								Departure Time: {{segment.leg[0].departureTime}} <br />
-																								Arrival Time: {{segment.leg[0].arrivalTime}} <br />
-																							</p>
-																						</a>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-															</div>
-														</div>
-													</div> -->
-												</div>
-										</div>
-								</div>
+			<div class="insight-box insight-box--negative">
+				<div class="span-top">
+						<div class="count" id="tweets-negative">{{dataPoints["NEGATIVE"].count}}</div>
 					</div>
+					<div class="span-bottom">
+					Negative Tweets
 				</div>
+			</div>
+			<div class="insight-box insight-box--{{(dataPoints.POSITIVE.count >= dataPoints.NEGATIVE.count?'positive': 'negative')}}">
+				<div class="span-top">
+						<span class="small">Trend</span>
+				</div>
+				<div class="span-bottom trend">
+					<i class="fa fa-thumbs-up" data-ng-show="dataPoints.POSITIVE.count >= dataPoints.NEGATIVE.count"> Positive</i>
+					<i class="fa fa-thumbs-down" data-ng-show="dataPoints.NEGATIVE.count > dataPoints.POSITIVE.count"> Negative</i>
+				</div>
+			</div>
+		</div> <!-- inner col -->
 
+		<div class="col-sm-6">
+			<h2><img src="public/images/twitter-icon.png" alt="" height="35px"></img> Total<small> Tweets : </small> {{analysisResult.length}}</h2>
+			<div class="recent-tweets">
+				<div class="scrollPanel">
+							<a class="list-group-item" data-ng-repeat="tweet in analysisResult | orderBy:'postedTime':true" href="javascript:void(0);">
+									<p class="list-group-item-heading {{tweet.message.polarity}}" >{{tweet.message.postedTime}}  {{tweet.message.body}}</p>
+									<!-- <p>Posted Time: {{tweet.message.postedTime}}</p> -->
+							</a>
+				</div>
+			</div>
 		</div>
+	</div>
 
-		<div class="col-md-8">
+	<div class="row" data-ng-if="analysisResult && analysisResult.length > 0" style="padding-bottom: 15px;margin-bottom: 15px;padding-top: 15px;margin-top: 15px;">
+		<div class="col-md-6">
+				<h2> Allocation of Tweets </h2>
 				<div data-ng-if="googleChart && googleChart.data.rows && googleChart.data.rows.length > 0">
 						<!-- <div d3-bars bar-height="20" data="d3Data" bar-padding="5"></div> -->
-					  <div google-chart chart="googleChart" style="height:450px; width:100%;"></div>
+					  <!-- <div google-chart chart="googleChart" style="height:400px; width:100%;"></div> -->
 				</div>
-				<div data-ng-if="d3Chart.data && d3Chart.data && d3Chart.data.length > 0">
-					<h3>{{selectedAirline}} Twitter Insights</h3>
-						<nvd3 options="d3Chart.options" data="d3Chart.data" config="d3Chart.config"> </nvd3>
-						<div class="list-group" data-ng-show="selectedSegment.data">
-								<h4 class="list-group-item-heading" style="color: {{selectedSegment.color}};">Total {{selectedSegment.data.polarity}} Tweets: {{selectedSegment.data.count}} </h4>
-								<div class="scrollPanel">
-											<a class="list-group-item" data-ng-repeat="tweet in selectedSegment.data.tweets | orderBy:'postedTime':true" href="javascript:void(0);">
-													<h5 class="list-group-item-heading">{{tweet.body}}</h5>
-													<p>Posted Time: {{tweet.postedTime}}</p>
-											</a>
-								</div>
-						</div>
+				<div data-ng-if="d3PolarityChart.data && d3PolarityChart.data && d3PolarityChart.data.length > 0">
+						<nvd3 options="d3PolarityChart.options" data="d3PolarityChart.data" config="d3PolarityChart.config"> </nvd3>
 				</div>
+		</div>
+		<div class="col-md-6">
+			<div class="list-group" >
+					<h2> Datewise Graph </h2>
+					<nvd3 options="d3MultiChart.options" data="d3MultiChart.data" config="d3MultiChart.config"> </nvd3>					
+			</div>
 		</div>
 
 	</div>

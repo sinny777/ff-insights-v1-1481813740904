@@ -11,6 +11,7 @@ define(function (require) {
                                                    'app.config']);
 
     commonModule.factory('commonService', require('modules/common/services/commonService'));
+    commonModule.factory('graphService', require('modules/common/services/graphService'));
     commonModule.factory('ffService', require('modules/common/services/ffService'));
     // commonModule.factory('d3Service', require('modules/common/services/d3Service'));
 

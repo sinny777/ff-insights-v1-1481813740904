@@ -31,6 +31,10 @@ app.configure(function() {
     app.use(express.json({limit: '50mb'}));
     app.use(express.urlencoded({ extended: true }));
 
+		app.use(express.favicon('public/favicon.ico'));
+	  this.use(express.static(__dirname + 'bower_components'));
+	  this.use(express.static(__dirname + 'public'));
+
     app.use(express.session({ secret: 'keyboard cat' }));
 
 });

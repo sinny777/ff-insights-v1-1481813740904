@@ -11,6 +11,10 @@ module.exports = function(app) {
         res.render('views/' + name);
     });
 
+    app.get('/auth/facebook', ffEndpoint.fbAuth);
+
+    app.get('/api/fb/search', ffEndpoint.searchFB);
+
     app.post('/api/ff/insights', showClientRequest, ffEndpoint.fetchInsights);
     app.post('/api/ff/aviations', showClientRequest, ffEndpoint.getAviationData);
 
