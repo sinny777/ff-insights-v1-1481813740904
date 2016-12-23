@@ -118,6 +118,7 @@ module.exports = function() {
 
 	methods.fetchInsights = function(req, resp, next){
 		//TODO Just for testing FB Graph APIs
+		/*
 		var searchOptions = {
 				q:     "Gurvinder Singh"
 			, type:  "user"
@@ -138,7 +139,7 @@ module.exports = function() {
 				}
 			}
 		});
-
+		*/
 
 		params = req.body;
 		var reqUrl = "https://dc42d418-9363-4911-bade-4e92dbaf2ebf:M5uwnyPVtQ@cdeservice.mybluemix.net:443/api/v1/messages/search?";

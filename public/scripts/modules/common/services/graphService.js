@@ -57,7 +57,7 @@ define(['angular'], function (angular) {
                   return pieGraph;
 
                 },
-            getMultiGraph: function(data) {
+            getMultiGraph: function(data, funcObj) {
                 var multiGraph = {
                   "data": data,
                   "config":{
@@ -86,36 +86,37 @@ define(['angular'], function (angular) {
                         bars2: {
                             forceY: [0]
                         },
-                        color: ['#2ca02c', 'darkred'],
+                        color: funcObj.colorFunc,
                         x: function(d,i) { return i },
                         xAxis: {
                             axisLabel: 'X Axis',
                             tickFormat: function(d) {
-                                var dx = data[0].values[d] && data[0].values[d].x || 0;
+                                var dx = data[2].values[d] && data[2].values[d].x || 0;
                                 if (dx > 0) {
-                                    return d3.time.format('%x')(new Date(dx))
+                                     return d3.time.format('%x')(new Date(Number(dx)))
                                 }
                                 return null;
                             }
                         },
                         x2Axis: {
                             tickFormat: function(d) {
-                                var dx = data[0].values[d] && data[0].values[d].x || 0;
-                                return d3.time.format('%b-%Y')(new Date(dx))
+                                var dx = data[2].values[d] && data[2].values[d].x || 0;
+                                return d3.time.format('%x')(new Date(Number(dx)))
                             },
                             showMaxMin: false
                         },
                         y1Axis: {
-                            axisLabel: 'Y1 Axis',
+                            axisLabel: 'Tweets Count',
                             tickFormat: function(d){
                                 return d3.format(',f')(d);
                             },
                             axisLabelDistance: 12
                         },
                         y2Axis: {
-                            axisLabel: 'Y2 Axis',
+                            axisLabel: 'Bookings',
                             tickFormat: function(d) {
-                                return '$' + d3.format(',.2f')(d)
+                                // return '$' + d3.format(',.2f')(d)
+                                return d3.format(',f')(d);
                             }
                         },
                         y3Axis: {
@@ -125,7 +126,7 @@ define(['angular'], function (angular) {
                         },
                         y4Axis: {
                             tickFormat: function(d) {
-                                return '$' + d3.format(',.2f')(d)
+                                return d3.format(',f')(d);
                             }
                         }
                       }
